@@ -8,7 +8,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Profile {
+export class Settings {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -24,7 +24,7 @@ export class Profile {
   @Column({
     type: 'varchar',
     nullable: true,
-    default: 'America/Los_Angeles',
+    default: 'America/Bogota',
   })
   timezone: string;
 

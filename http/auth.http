@@ -1,0 +1,23 @@
+###
+
+POST http://127.0.0.1:4200/api/auth/register 
+Content-Type: application/json
+
+{
+  "fullName":"John Doe",
+  "email":"john.doe@example.com",
+  "password":"12345678",
+  "companyName":"My Company"
+}
+
+###
+
+POST http://127.0.0.1:4200/api/settings 
+Content-Type: application/json
+
+{
+    "emails": "john.doe@example.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "timezone": "America/Bogota"
+}

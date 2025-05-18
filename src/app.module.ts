@@ -10,7 +10,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@/config/config.service';
+import { SettingsModule } from './resources/settings/settings.module';
 import * as fs from 'fs';
+import { Settings } from '@/entities/settings.entity';
+import { AuthModule } from './resources/auth/auth.module';
 
 const envPath = `.env.${process.env.NODE_ENV ?? 'development'}`;
 const envFileExists = fs.existsSync(envPath);
@@ -36,13 +39,15 @@ const envFileExists = fs.existsSync(envPath);
           username: database.username,
           password: database.password,
           database: database.database,
-          entities: [],
+          entities: [Settings],
           synchronize: database.synchronize,
         } as TypeOrmModuleOptions;
         return config;
       },
       inject: [NestConfigService],
     }),
+    SettingsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
